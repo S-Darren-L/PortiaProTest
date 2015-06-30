@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/item_background">
+
+     <ImageView
+         android:id="@+id/ivWeatherIcon"
+         android:layout_width="80dp"
+         android:layout_height="80dp"
+         android:layout_alignParentStart="true"
+         android:layout_marginTop="5dp"
+         android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/tvWeatherMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/ivWeatherIcon"
+        android:layout_marginStart="10dp"
+        android:layout_alignTop="@+id/ivWeatherIcon"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvWeatherDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvWeatherMain"
+        android:layout_toStartOf="@+id/tvCountry"
+        android:layout_marginEnd="2dp"
+        android:layout_below="@+id/tvWeatherMain"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+     <TextView
+         android:id="@+id/tvCity"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/ivWeatherIcon"
+         android:layout_alignParentStart="true"
+         android:layout_marginStart="200dp"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvCity"
+        android:layout_below="@+id/tvCity"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvMainTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvWeatherMain"
+        android:layout_below="@+id/tvWeatherDescription"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvMainTempRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvMainTemp"
+        android:layout_alignStart="@+id/tvCity"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvHumidityLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ivWeatherIcon"
+        android:layout_below="@+id/tvMainTemp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/humidity_lable" />
+
+    <TextView
+        android:id="@+id/tvMainHumidityString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvHumidityLable"
+        android:layout_below="@+id/tvHumidityLable"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+     <TextView
+         android:id="@+id/tvPressureLable"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/tvHumidityLable"
+         android:layout_alignStart="@+id/tvMainTemp"
+         android:text="@string/pressure_lable" />
+
+     <TextView
+         android:id="@+id/tvMainPressureString"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/tvMainHumidityString"
+         android:layout_alignStart="@+id/tvPressureLable"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+     <TextView
+         android:id="@+id/tvWindSpeedLable"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/tvPressureLable"
+         android:layout_alignStart="@+id/tvCity"
+         android:text="@string/wind_speed_lable" />
+
+     <TextView
+         android:id="@+id/tvWindSpeedString"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/tvMainPressureString"
+         android:layout_alignStart="@+id/tvWindSpeedLable"
+         android:layout_marginBottom="5dp"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>
