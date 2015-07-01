@@ -52,7 +52,8 @@ public class WeatherAdapter extends BaseAdapter {
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.weather_item, null);
 		}
-
+		
+		//Initial weather item view
 		ImageView ivWeatherIcon = (ImageView) convertView
 				.findViewById(R.id.ivWeatherIcon);
 		TextView tvCity = (TextView) convertView.findViewById(R.id.tvCity);
@@ -77,6 +78,7 @@ public class WeatherAdapter extends BaseAdapter {
 		TextView tvWindSpeedString = (TextView) convertView
 				.findViewById(R.id.tvWindSpeedString);
 
+		//Set weather data onto view
 		if (cityWeatherList.get(position) != null) {
 			tvCity.setText(cityWeatherList.get(position).getCityString());
 			tvCountry.setText(cityWeatherList.get(position).getCountryString());
@@ -95,19 +97,14 @@ public class WeatherAdapter extends BaseAdapter {
 			tvMainPressureString.setText(cityWeatherList.get(position)
 					.getMainPressureString());
 			tvWindSpeedString.setText(cityWeatherList.get(position)
-					.getWindSpeedString());			
-			
+					.getWindSpeedString());
+			//Decode weather icon image data
 			Bitmap bitmap = BitmapFactory.decodeByteArray(
 					cityWeatherList.get(position).getIconData(), 0,
-					cityWeatherList.get(position).getIconData().length);			
-
-			// test
-			byte[] iconData = cityWeatherList.get(position).getIconData();
-			String s = new String(iconData);
-	        System.out.println("iconData: " + position + " : " + s);
-	        System.out.println("bitmap£º " + bitmap);
-	        
+					cityWeatherList.get(position).getIconData().length);	
+			//Set weather icon size
 			ivWeatherIcon.setScaleType(ScaleType.FIT_XY);
+			//Set weather icon image
 			ivWeatherIcon.setImageBitmap(bitmap);
 		} else {
 			Toast.makeText(context, "Cannot get weather data",

@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WeatherHttpClient {
@@ -16,24 +15,16 @@ public class WeatherHttpClient {
     public String getWeatherData(String location) {
         HttpURLConnection con = null ;
         InputStream is = null;        
-
-        //test
-        try {
-			URL url = new URL(BASE_URL + location);
-	        System.out.println("URL: " + url.toString());
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
  
         try {
+        	//Start connection
             con = (HttpURLConnection) ( new URL(BASE_URL + location)).openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
             con.setDoOutput(true);
             con.connect();            
              
-            // Let's read the response
+            // Read the response
             StringBuffer buffer = new StringBuffer();
             is = con.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -43,10 +34,6 @@ public class WeatherHttpClient {
              
             is.close();
             con.disconnect();
-            
-//            //test
-//            String bufferString = buffer.toString();
-//            System.out.println("bufferString: " + bufferString);
             
             return buffer.toString();
         }
@@ -72,13 +59,10 @@ public class WeatherHttpClient {
             con.setDoOutput(true);
             con.connect();
              
-            // Let's read the response
+            // Read the response
             is = con.getInputStream();
             byte[] buffer = new byte[1024];
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-             
-//            while ( is.read(buffer) != -1)
-//                baos.write(buffer);
             int len = -1;
             while ((len = is.read(buffer)) != -1)
                 baos.write(buffer, 0, len);

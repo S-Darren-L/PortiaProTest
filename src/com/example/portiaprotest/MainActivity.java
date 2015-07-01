@@ -2,29 +2,17 @@ package com.example.portiaprotest;
 
 import java.util.ArrayList;
 
-import org.json.JSONException;
-
 import beans.JSONWeatherParser;
 import beans.Weather;
 import beans.WeatherAdapter;
 import beans.WeatherHttpClient;
-import android.app.Activity;
 import android.app.ListActivity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
@@ -33,6 +21,7 @@ public class MainActivity extends ListActivity {
 	private ListView cityWeatherItem;
 	private WeatherAdapter weatherAdapter;
 	private ArrayList<Weather> cityWeatherList = new ArrayList<Weather>();
+	private ProgressDialog pDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +30,34 @@ public class MainActivity extends ListActivity {
 		setContentView(R.layout.activity_main);
 		cityWeatherItem = (ListView) findViewById(android.R.id.list);
 
+		//Get city name and country
 		cityList = getResources().getStringArray(R.array.city_list_items);
-
+		
+		//Start AsyncTask
 		new GetCityWeatherTask().execute();
 	}
 
 	private class GetCityWeatherTask extends AsyncTask<String, Void, String> {
 		Weather weather = new Weather();
+		
+		//Show progress dialog while loading data
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(MainActivity.this);
+			pDialog.setTitle("Contacting Servers");
+			pDialog.setMessage("Loading ...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
 
 		@Override
 		protected String doInBackground(String... params) {
 			
 			for(int i = 0; i < cityList.length; i++){
 				String data = ((new WeatherHttpClient()).getWeatherData(cityList[i]));
+				//Retrieve weather data
 				JSONWeatherParser jsonWeatherParser = new JSONWeatherParser();
 				weather = jsonWeatherParser.getWeather(data);
 				// Retrieve the icon
@@ -61,24 +65,14 @@ public class MainActivity extends ListActivity {
 		        cityWeatherList.add(weather);
 			}
 			return null;
-			
-//			//test
-//			//String data = ((new WeatherHttpClient()).getWeatherData("Toronto,Canada"));
-//			
-//			String data = ((new WeatherHttpClient()).getWeatherData(params[0]));
-//			JSONWeatherParser jsonWeatherParser = new JSONWeatherParser();
-//			weather = jsonWeatherParser.getWeather(data);
-//			// Retrieve the icon
-//	        weather.setIconData((new WeatherHttpClient()).getImage(weather.getWeatherIconString()));
-//	        
-//	        //test
-//	        String s = new String(weather.getIconData());
-//	        System.out.println("iconData: " + s);
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
+			//Close progress dialog
+			pDialog.dismiss();
 			if(cityWeatherList != null){
+				//Set Adapter
 				weatherAdapter = new WeatherAdapter(cityWeatherList, MainActivity.this);
 				cityWeatherItem.setAdapter(weatherAdapter);
 			} else{

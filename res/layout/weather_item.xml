@@ -20,6 +20,7 @@
         android:layout_toEndOf="@+id/ivWeatherIcon"
         android:layout_marginStart="10dp"
         android:layout_alignTop="@+id/ivWeatherIcon"
+        android:textColor="@color/item_text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -30,6 +31,7 @@
         android:layout_toStartOf="@+id/tvCountry"
         android:layout_marginEnd="2dp"
         android:layout_below="@+id/tvWeatherMain"
+        android:textColor="@color/item_text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
      <TextView
@@ -39,6 +41,7 @@
          android:layout_alignTop="@+id/ivWeatherIcon"
          android:layout_alignParentStart="true"
          android:layout_marginStart="200dp"
+        android:textColor="@color/item_text"
          android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -47,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tvCity"
         android:layout_below="@+id/tvCity"
+        android:textColor="@color/item_text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -55,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tvWeatherMain"
         android:layout_below="@+id/tvWeatherDescription"
+        android:textColor="@color/item_text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -63,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvMainTemp"
         android:layout_alignStart="@+id/tvCity"
+        android:textColor="@color/item_text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -73,7 +79,8 @@
         android:layout_below="@+id/tvMainTemp"
         android:layout_marginTop="2dp"
         android:layout_marginStart="15dp"
-        android:text="@string/humidity_lable" />
+        android:text="@string/humidity_lable" 
+        android:textColor="@color/item_text"/>
 
     <TextView
         android:id="@+id/tvMainHumidityString"
@@ -81,6 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tvHumidityLable"
         android:layout_below="@+id/tvHumidityLable"
+        android:textColor="@color/item_text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
      <TextView
@@ -89,7 +97,8 @@
          android:layout_height="wrap_content"
          android:layout_alignTop="@+id/tvHumidityLable"
          android:layout_alignStart="@+id/tvMainTemp"
-         android:text="@string/pressure_lable" />
+         android:text="@string/pressure_lable"
+        android:textColor="@color/item_text" />
 
      <TextView
          android:id="@+id/tvMainPressureString"
@@ -97,6 +106,7 @@
          android:layout_height="wrap_content"
          android:layout_alignTop="@+id/tvMainHumidityString"
          android:layout_alignStart="@+id/tvPressureLable"
+        android:textColor="@color/item_text"
          android:textAppearance="?android:attr/textAppearanceMedium" />
 
      <TextView
@@ -105,7 +115,8 @@
          android:layout_height="wrap_content"
          android:layout_alignTop="@+id/tvPressureLable"
          android:layout_alignStart="@+id/tvCity"
-         android:text="@string/wind_speed_lable" />
+         android:text="@string/wind_speed_lable" 
+        android:textColor="@color/item_text"/>
 
      <TextView
          android:id="@+id/tvWindSpeedString"
@@ -114,6 +125,7 @@
          android:layout_alignTop="@+id/tvMainPressureString"
          android:layout_alignStart="@+id/tvWindSpeedLable"
          android:layout_marginBottom="5dp"
+        android:textColor="@color/item_text"
          android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

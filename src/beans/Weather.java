@@ -1,7 +1,6 @@
 package beans;
 
-import android.R.integer;
-
+//weather model class
 public class Weather {
 
 	private String cityString;

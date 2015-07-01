@@ -18,6 +18,7 @@ public final class R {
     public static final class color {
         public static final int activity_background=0x7f040000;
         public static final int item_background=0x7f040001;
+        public static final int item_text=0x7f040002;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 

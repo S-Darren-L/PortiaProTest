@@ -12,20 +12,24 @@ public class JSONWeatherParser {
 	
 	public Weather getWeather(String data){
 				
+		//Parse Json data
 		try {
 			jObj = new JSONObject(data);
 			
 			weather.setCityString(jObj.optString("name"));
 			
+			//Parse object data
 			JSONObject sysObj = getObject("sys", jObj);
 			weather.setCountryString(getString("country", sysObj));
 			
+			//Parse array data
 			JSONArray jArr = jObj.getJSONArray("weather");
 			JSONObject JSONWeather = jArr.getJSONObject(0);
 			weather.setWeatherMainString(getString("main", JSONWeather));
 			weather.setWeatherDescriptionString(getString("description", JSONWeather));
 			weather.setWeatherIconString(getString("icon", JSONWeather) + ".png");
-			
+
+			//Parse object data
 			JSONObject mainObj = getObject("main", jObj);
 			weather.setMainTempString(getString("temp", mainObj) + " \u2103");
 			weather.setMainHumidityString(getString("humidity", mainObj) + " %");
@@ -33,6 +37,7 @@ public class JSONWeatherParser {
 			weather.setMainTempMinString(getString("temp_min", mainObj) + " \u2103");
 			weather.setMainTempmaxString(getString("temp_max", mainObj) + " \u2103");	
 
+			//Parse object data
 			JSONObject windObj = getObject("wind", jObj);
 			weather.setWindSpeedString(getString("speed", windObj) + " meter/sec");
 		} catch (JSONException e) {

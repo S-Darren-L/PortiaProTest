@@ -3,5 +3,6 @@
     
     <color name="activity_background">#beeffd</color>
     <color name="item_background">#e7f8fd</color>
+    <color name="item_text">#5e6370</color>
     
 </resources>
